@@ -17,7 +17,8 @@ func SetupServerRoutes() {
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		err := ws.WebsocketHandler(pool, w, r)
 		if err != nil {
-			log.Fatalf("Error upgrading connection to WS")
+      log.Println(err)
+			log.Println("Error upgrading connection to WS")
 		}
 	})
 	http.HandleFunc("/api/hello", func(w http.ResponseWriter, r *http.Request) {
